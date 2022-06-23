@@ -1,0 +1,28 @@
+.custom-image {
+    object-fit: cover;
+}
+
+.icon-medium {
+    font-size: 25px;
+}
+
+.icon-favorite:hover {
+    color: hsl(348, 100%, 61%);
+}
+
+.icon-animation {
+    transition: transform ease-out 0.1s, background 0.2s;
+}
+
+.icon-animation:hover {
+    transform: scale(1.5);
+}
+
+
+.custom-card {
+    min-width: 250px;
+    /*max-width: 1920px;*/
+}
+/*body {*/
+/*    background: pink;*/
+/*}*/

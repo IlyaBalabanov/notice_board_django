@@ -1,0 +1,13 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <div class="columns is-gapless is-multiline is-mobile">
+        <div class="column is-half">
+            <form method="post">
+                {% csrf_token %}
+                {% include 'includes/form.html' with form=form %}
+                <button class="button is-success" type="submit" value="Submit">Войти</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

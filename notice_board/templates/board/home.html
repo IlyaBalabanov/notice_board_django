@@ -1,0 +1,29 @@
+{% extends 'layouts/base.html' %}
+
+{% block js %}
+    {% load static %}
+    <script src="{% static 'board/js/js.cookie.js' %}"></script>
+    <script src="{% static 'board/js/relation.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    {% if success_create %}
+    <div class="notification is-primary">
+        <i class="fa-solid fa-circle-check"></i>
+        Заметка успешно создана
+    </div>
+    {% endif %}
+    <a href="create">
+        <button class="button is-success m-3">
+            <i class="fa-solid fa-plus"></i> &nbsp; Добавить объявление
+        </button>
+    </a>
+    <div class="columns is-gapless is-multiline">
+        {% for notice in notices %}
+            {% if not notice.is_hidden %}
+                {% include 'includes/notice_view.html' with notice=notice full=full %}
+            {% endif %}
+        {% endfor %}
+    </div>
+
+{% endblock %}

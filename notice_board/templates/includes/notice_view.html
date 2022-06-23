@@ -1,0 +1,70 @@
+{% if full %}
+    <div class="card m-3">
+{% else %}
+    <div class="card m-3 column is-one-quarter">
+{% endif %}
+    <div class="card-image">
+        <figure class="image is-4by3">
+            {% load static %}
+            <img src="
+                    {% if notice.image %}
+                        {{ notice.image.url }}
+                    {% else %}
+                        {% static 'board/images/mock.jpg' %}
+                    {% endif %}
+                    "
+                 alt="Placeholder image" class="custom-image">
+        </figure>
+    </div>
+    <div class="card-content">
+        <div class="media">
+            <div class="media-left">
+                <figure class="image is-48x48 is-square">
+
+                    <img src="
+                    {% if notice.author.image %}
+                        {{ notice.author.image.url }}
+                    {% else %}
+                        https://bulma.io/images/placeholders/96x96.png
+                    {% endif %}
+                    " alt="Placeholder image"
+                      class="custom-image">
+                </figure>
+            </div>
+            <div class="media-content">
+                <p class="title is-4">{{ notice.author.first_name }} {{ notice.author.last_name }}</p>
+                <p class="subtitle is-6">
+                    <i class="fa-solid fa-location-dot"></i>
+                    {{ notice.author.address.short }}
+                </p>
+            </div>
+
+            <i class="fa-solid fa-eye-slash icon-medium icon-animation" action="hide" data="{{ notice.pk }}"></i>
+            &nbsp;&nbsp;
+
+
+            <i
+                    class="
+                        fa-solid fa-star
+                        icon-medium icon-animation
+                        icon-favorite
+                        {% if notice.is_favorite %}
+                            has-text-danger
+                        {% endif %}
+                        "
+                    action="favorite"
+                    data="{{ notice.pk }}"
+            ></i>
+
+        </div>
+
+        <div class="content">
+            <a href="notice/{{ notice.pk }}/">
+                <h2 class="title is-2"> {{ notice.title }}</h2>
+            </a>
+            {{ notice.text_preview }}
+            <br>
+        </div>
+        <time datetime="2016-1-1">{{ notice.created }}</time>
+    </div>
+</div>
